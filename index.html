@@ -15,17 +15,40 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
+            background-color: #fafdff;
+            color: #222;
             line-height: 1.6;
             display: flex;
+        }
+
+        .hamburger {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 200;
+            background: transparent;
+            border: none;
+        }
+
+        /* If using SVG, make sure it fills the container */
+        .hamburger svg {
+            width: 32px;
+            height: 32px;
+            display: block;
+            filter: invert(1);
         }
 
         .sidebar {
             width: 220px;
             min-height: 100vh;
-            background: #fff;
-            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+            background: #f7faff;
+            box-shadow: 2px 0 8px rgba(180, 200, 255, 0.08);
             padding: 2rem 1rem;
             position: fixed;
             left: 0;
@@ -34,6 +57,12 @@
             flex-direction: column;
             align-items: flex-start;
             z-index: 100;
+            transform: translateX(-220px);
+            transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .sidebar.visible {
+            transform: translateX(15px);
         }
 
         .sidebar ul {
@@ -44,34 +73,43 @@
         }
 
         .sidebar ul li {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             width: 100%;
         }
 
         .sidebar ul li a {
             text-decoration: none;
-            color: #2a63ff;
+            color: #3570e6;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1.08rem;
             display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background 0.2s, color 0.2s;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(180, 200, 255, 0.04);
         }
 
         .sidebar ul li a:hover {
-            background: #eaf1ff;
-            color: #1c45c3;
+            background: #dbeaff;
+            color: #4f8cff;
+            box-shadow: 0 4px 16px rgba(180, 200, 255, 0.10);
         }
 
         main {
-            margin-left: 220px;
-            width: calc(100% - 220px);
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        @media (min-width: 801px) {
+            main.shifted {
+                margin-left: 220px;
+            }
         }
 
         header {
-            background: linear-gradient(to right, #4f8cff, #3b6eea);
-            color: #fff;
+            background: linear-gradient(to right, #eaf4ff, #cbe2ff);
+            color: #3570e6;
             padding: 4rem 2rem;
             text-align: center;
         }
@@ -89,9 +127,9 @@
         .container {
             max-width: 700px;
             margin: 3rem auto;
-            background: #ffffff;
+            background: #fafdff;
             border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 16px rgba(180, 200, 255, 0.08);
             padding: 2.5rem;
             text-align: center;
         }
@@ -99,18 +137,17 @@
         .container h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: #2a2a2a;
+            color: #3570e6;
         }
 
         .container p {
-            font-size: 1.05rem;
-            color: #555;
+            color: #444;
             margin-bottom: 2rem;
         }
 
         .cta {
             display: inline-block;
-            background: #4f8cff;
+            background: #90b0ef;
             color: #fff;
             padding: 0.9rem 2rem;
             border-radius: 6px;
@@ -121,22 +158,25 @@
         }
 
         .cta:hover {
-            background: #3570e6;
+            background: #4f8cff;
         }
 
         footer {
-            background: #f0f4fa;
-            color: #333;
+            background: #eaf4ff;
+            color: #3570e6;
             text-align: center;
             padding: 2rem 1rem 1rem 1rem;
             font-size: 0.95rem;
-            border-top: 1px solid #e0e6ed;
+            border-top: 1px solid #cbe2ff;
             margin-top: 3rem;
         }
 
+        .footer-content a {
+            color: #3570e6 !important;
+        }
+
         .footer-content a:hover {
-            text-decoration: underline;
-            color: #3570e6;
+            color: #4f8cff !important;
         }
 
         @media (max-width: 800px) {
@@ -166,9 +206,18 @@
             }
         }
     </style>
+    <script src="script.js"></script>
 </head>
 
 <body>
+    <div id="hamburger" class="hamburger">
+        <!-- Example SVG Hamburger Icon -->
+        <svg viewBox="0 0 100 80" width="32" height="32">
+            <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="30" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+        </svg>
+    </div>
     <nav class="sidebar">
         <ul>
             <li><a href="#">Home</a></li>
