@@ -1,58 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mentor Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f9fc;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        header {
-            background: #4f8cff;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
         }
-        .container {
-            max-width: 600px;
-            margin: 2rem auto;
+
+        .sidebar {
+            width: 220px;
+            min-height: 100vh;
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            padding: 2rem;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+            padding: 2rem 1rem;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 100;
         }
-        .cta {
-            display: block;
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             width: 100%;
-            background: #4f8cff;
-            color: #fff;
-            border: none;
-            padding: 1rem;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin-top: 1.5rem;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .sidebar ul li a {
             text-decoration: none;
+            color: #2a63ff;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #eaf1ff;
+            color: #1c45c3;
+        }
+
+        main {
+            margin-left: 220px;
+            width: calc(100% - 220px);
+        }
+
+        header {
+            background: linear-gradient(to right, #4f8cff, #3b6eea);
+            color: #fff;
+            padding: 4rem 2rem;
             text-align: center;
         }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 3rem auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .container h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        .container p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
+            display: inline-block;
+            background: #4f8cff;
+            color: #fff;
+            padding: 0.9rem 2rem;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
         .cta:hover {
             background: #3570e6;
         }
+
+        footer {
+            background: #f0f4fa;
+            color: #333;
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+            font-size: 0.95rem;
+            border-top: 1px solid #e0e6ed;
+            margin-top: 3rem;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+            color: #3570e6;
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: static;
+                flex-direction: row;
+                align-items: center;
+                padding: 1rem;
+            }
+
+            main {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                margin: 1.5rem;
+                padding: 2rem;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Mentor Connect</h1>
-        <p>Connecting mentors and mentees for growth and success</p>
-    </header>
-    <div class="container">
-        <h2>Welcome!</h2>
-        <p>Mentor Connect is a platform designed to help you find mentors or mentees in your field. Join our community to learn, share, and grow together.</p>
-        <a href="#" class="cta">Get Started</a>
-    </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Find a Mentor</a></li>
+            <li><a href="#">Become a Mentor</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <header>
+            <h1>Mentor Connect</h1>
+            <p>Empowering connections for learning and growth</p>
+        </header>
+        <div class="container">
+            <h2>Welcome to Mentor Connect</h2>
+            <p>Join our vibrant community to find the right mentor or mentee in your domain. Share knowledge, gain
+                insights,
+                and grow together.</p>
+            <a href="#" class="cta">Get Started</a>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Mentor Connect. All rights reserved.</p>
+                <p>
+                    <a href="#" style="color:#4f8cff;text-decoration:none;">Privacy Policy</a> |
+                    <a href="#" style="color:#4f8cff;text-decoration:none;">Terms of Service</a>
+                </p>
+            </div>
+        </footer>
+    </main>
 </body>
+
 </html>
