@@ -6,13 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Hide sidebar initially
     sidebar.classList.remove('visible');
+    hamburger.classList.remove('hide');
 
-    // Show sidebar on hamburger hover
+    // Show sidebar and hide hamburger on hamburger hover
     hamburger.addEventListener('mouseenter', function () {
         sidebar.classList.add('visible');
+        hamburger.classList.add('hide');
     });
-    // Hide sidebar when mouse leaves sidebar
+    // Hide sidebar and show hamburger when mouse leaves sidebar
     sidebar.addEventListener('mouseleave', function () {
         sidebar.classList.remove('visible');
+        hamburger.classList.remove('hide');
     });
 });
