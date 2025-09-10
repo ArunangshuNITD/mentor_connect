@@ -344,14 +344,79 @@
             <a href="#" class="cta">Get Started</a>
         </div>
         <footer>
-            <div class="footer-content">
-                <p>&copy; 2025 Mentor Connect. All rights reserved.</p>
-                <p>
+            <div class="faq-section" style="max-width:700px;margin:2rem auto 0 auto;text-align:left;">
+                <h2 style="color:#3570e6;margin-bottom:1rem;">Frequently Asked Questions</h2>
+                <div class="faq-columns" style="display:flex;flex-wrap:wrap;gap:2rem;">
+                    <div class="faq-col" style="flex:1 1 300px;min-width:0;">
+                        <div class="faq-item" style="margin-bottom:1.2rem;">
+                            <button class="faq-question"
+                                style="background:none;border:none;color:#3570e6;font-weight:bold;font-size:1.08rem;cursor:pointer;padding:0;outline:none;">Q:
+                                How do I find a mentor?</button>
+                            <div class="faq-answer"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.68,-0.55,.27,1.55);">
+                                <p style="margin:0;">A: Click on "Find a Mentor" in the sidebar and browse our list of
+                                    expert
+                                    mentors. Use the search and filter options to find the best match for you.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" style="margin-bottom:1.2rem;">
+                            <button class="faq-question"
+                                style="background:none;border:none;color:#3570e6;font-weight:bold;font-size:1.08rem;cursor:pointer;padding:0;outline:none;">Q:
+                                Can I become a mentor?</button>
+                            <div class="faq-answer"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.68,-0.55,.27,1.55);">
+                                <p style="margin:0;">A: Yes! Click on "Become a Mentor" in the sidebar and follow the
+                                    instructions to sign up as a mentor.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-col" style="flex:1 1 300px;min-width:0;">
+                        <div class="faq-item" style="margin-bottom:1.2rem;">
+                            <button class="faq-question"
+                                style="background:none;border:none;color:#3570e6;font-weight:bold;font-size:1.08rem;cursor:pointer;padding:0;outline:none;">Q:
+                                Is Mentor Connect free?</button>
+                            <div class="faq-answer"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.68,-0.55,.27,1.55);">
+                                <p style="margin:0;">A: Mentor Connect offers both free and premium plans. You can start
+                                    with a
+                                    free account and upgrade anytime for more features.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item" style="margin-bottom:1.2rem;">
+                            <button class="faq-question"
+                                style="background:none;border:none;color:#3570e6;font-weight:bold;font-size:1.08rem;cursor:pointer;padding:0;outline:none;">Q:
+                                How do I contact support?</button>
+                            <div class="faq-answer"
+                                style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.68,-0.55,.27,1.55);">
+                                <p style="margin:0;">A: Visit our Contact page or email us at mentorconnect@example.com
+                                    for
+                                    assistance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"
+                style="width:100%;text-align:center;margin-top:2rem;padding:1rem 0 0 0;font-size:0.98rem;color:#888;">
+                <p style="margin:0 0 0.3rem 0;">&copy; 2025 Mentor Connect. All rights reserved.</p>
+                <p style="margin:0;">
                     <a href="#" style="color:#4f8cff;text-decoration:none;">Privacy Policy</a> |
                     <a href="#" style="color:#4f8cff;text-decoration:none;">Terms of Service</a>
                 </p>
             </div>
         </footer>
+        <script>
+            document.querySelectorAll('.faq-question').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const answer = btn.nextElementSibling;
+                    if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+                        answer.style.maxHeight = '0';
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+        </script>
     </main>
 </body>
 
