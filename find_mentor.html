@@ -43,6 +43,7 @@
             margin: 2.5rem auto;
             padding: 0 1rem;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         .mentor-card {
@@ -165,6 +166,24 @@
             background: #f0f4ff;
         }
 
+        footer {
+            background: #eaf4ff;
+            color: #3570e6;
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+            font-size: 0.95rem;
+            border-top: 1px solid #cbe2ff;
+            margin-top: 3rem;
+        }
+
+        .footer-content a {
+            color: #3570e6 !important;
+        }
+
+        .footer-content a:hover {
+            color: #4f8cff !important;
+        }
+
         .dark-mode {
             background: #121212;
             color: #e0e0e0;
@@ -270,7 +289,11 @@
         <p>Browse our expert mentors and connect for guidance and growth.</p>
     </header>
     <main>
-        <div class="mentor-grid">
+        <div style="max-width: 700px; margin: 2rem auto 0 auto; text-align: center;">
+            <input type="text" id="mentor-search" placeholder="Search mentors by name, title, or skill..."
+                style="width: 100%; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #cbe2ff; font-size: 1.05rem; margin-bottom: 2rem; box-sizing: border-box;">
+        </div>
+        <div class="mentor-grid" id="mentor-grid">
             <div class="mentor-card">
                 <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mentor Photo" class="mentor-photo">
                 <div class="mentor-name">John Doe</div>
@@ -322,6 +345,15 @@
             </div>
         </div>
     </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Mentor Connect. All rights reserved.</p>
+            <p>
+                <a href="#" style="color:#4f8cff;text-decoration:none;">Privacy Policy</a> |
+                <a href="#" style="color:#4f8cff;text-decoration:none;">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
     <script>
         const hamburger = document.querySelector('.hamburger');
         const sidebar = document.querySelector('.sidebar');
@@ -345,6 +377,15 @@
                     }
                 });
             }
+        });
+        const mentorSearch = document.getElementById('mentor-search');
+        const mentorGrid = document.getElementById('mentor-grid');
+        mentorSearch.addEventListener('input', function () {
+            const query = mentorSearch.value.toLowerCase();
+            Array.from(mentorGrid.children).forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(query) ? '' : 'none';
+            });
         });
     </script>
 </body>
