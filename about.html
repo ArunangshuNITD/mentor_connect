@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - Mentor Connect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <style>
         * {
             box-sizing: border-box;
@@ -19,7 +19,9 @@
             color: #222;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
         }
 
         .hamburger {
@@ -38,16 +40,10 @@
             transition: opacity 0.2s;
         }
 
-        .hamburger.hide {
-            opacity: 0;
-            pointer-events: none;
-        }
-
         .hamburger svg {
             width: 32px;
             height: 32px;
             display: block;
-            filter: invert(1);
         }
 
         .sidebar {
@@ -63,12 +59,12 @@
             flex-direction: column;
             align-items: flex-start;
             z-index: 100;
-            transform: translateX(-220px);
-            transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
         }
 
         .sidebar.visible {
-            transform: translateX(15px);
+            transform: translateX(0);
         }
 
         .sidebar ul {
@@ -102,22 +98,36 @@
         }
 
         main {
-            margin-left: 0;
+            flex: 1;
             width: 100%;
-            transition: margin-left 0.3s cubic-bezier(.4, 0, .2, 1);
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
+            padding: 2rem;
+            position: relative;
+            z-index: 50;
+            box-sizing: border-box;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(180, 200, 255, 0.10);
         }
 
-        @media (min-width: 801px) {
-            main.shifted {
-                margin-left: 220px;
+        @media (max-width: 800px) {
+            main {
+                padding: 1rem;
+                max-width: 100%;
             }
         }
 
-        header {
-            background: linear-gradient(to right, #eaf4ff, #cbe2ff);
-            color: #3570e6;
-            padding: 4rem 2rem;
-            text-align: center;
+        @media (max-width: 600px) {
+            main {
+                padding: 0.5rem;
+            }
+
+            .about-section h1 {
+                font-size: 1.5rem;
+            }
         }
 
         .about-section h1 {
@@ -154,97 +164,101 @@
             background: #eaf4ff;
             color: #3570e6;
             text-align: center;
-            padding: 1.5rem 1rem 1rem 1rem;
-            font-size: 0.95rem;
-            border-top: 1px solid #cbe2ff;
-            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            margin-top: auto;
+            border-top: 1px solid #dbeaff;
         }
 
-        @media (max-width: 600px) {
-            main {
-                padding: 1.2rem 0.5rem;
-            }
+        footer h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
 
-            .about-section h1 {
-                font-size: 1.5rem;
-            }
+        footer p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #4f8cff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
-    <script src="script.js"></script>
 </head>
 
 <body>
-    <div id="hamburger" class="hamburger">
-        <svg viewBox="0 0 100 80" width="32" height="32">
-            <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
-            <rect y="30" width="100" height="15" rx="8" fill="#4f8cff"></rect>
-            <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+    <button class="hamburger" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
-    </div>
-    <nav class="sidebar">
+    </button>
+
+    <div class="sidebar">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="find_mentor.html">Find a Mentor</a></li>
-            <li><a href="#">Become a Mentor</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
         </ul>
-    </nav>
+    </div>
+
     <main>
-        <section class="about-section">
-            <h1>About Mentor Connect</h1>
-            <p>
-                <strong>Mentor Connect</strong> is a modern platform designed to create meaningful connections between
-                students and experienced industry professionals.
-                In today’s fast-paced world, students often face challenges finding reliable guidance to navigate
-                academic decisions, career choices, and skill development.
-            </p>
+        <div class="about-section">
+            <h1>About Us</h1>
+            <p>Welcome to Mentor Connect, where we bridge the gap between aspiring mentees and experienced mentors. Our
+                platform is designed to foster professional growth and personal development through meaningful
+                connections and
+                knowledge sharing.</p>
 
-            <h2>🎯 Our Mission</h2>
-            <p>
-                Our mission is simple yet powerful:
-                To empower learners by connecting them with experts who provide personalized advice, guidance, and
-                support — helping students realize their full potential.
-            </p>
+            <h2>Our Mission</h2>
+            <p>At Mentor Connect, our mission is to empower individuals by providing access to valuable insights,
+                guidance,
+                and support from seasoned professionals. We believe that everyone deserves the opportunity to learn,
+                grow, and
+                succeed.</p>
 
-            <h2>🌟 Our Vision</h2>
-            <p>
-                We envision a world where mentorship is accessible to every student, regardless of location or
-                background.
-                By combining technology and human expertise, we strive to create a collaborative ecosystem where
-                knowledge flows freely, and learning is limitless.
-            </p>
+            <h2>Our Vision</h2>
+            <p>We envision a world where knowledge and experience are shared freely, creating a global community of
+                empowered individuals who uplift and inspire each other. Through our platform, we aim to make mentorship
+                accessible to all, breaking down barriers and building a brighter future.</p>
 
-            <h2>🚀 What We Offer</h2>
+            <h2>What We Offer</h2>
             <ul>
-                <li><strong>Expert Mentors:</strong> Connect with professionals across industries to get real-world
-                    insights.</li>
-                <li><strong>Seamless Communication:</strong> Integrated video calls and instant messaging for smooth
-                    interactions.</li>
-                <li><strong>Personalized Sessions:</strong> Schedule one-on-one mentorship appointments based on your
-                    needs.</li>
-                <li><strong>Progress Tracking:</strong> Stay organized and track your learning journey through the
-                    platform.</li>
-                <li><strong>Feedback System:</strong> Receive actionable feedback to grow and improve.</li>
+                <li>Personalized mentor matching</li>
+                <li>One-on-one mentoring sessions</li>
+                <li>Group workshops and webinars</li>
+                <li>Access to exclusive resources and tools</li>
+                <li>A supportive and inclusive community</li>
             </ul>
 
-            <h2>✅ Why Choose Mentor Connect?</h2>
-            <p>
-                - Trusted Experts: All mentors are verified professionals with proven experience.<br>
-                - Convenience: No more endless searching — your mentor is just a click away.<br>
-                - Flexible Learning: Access mentorship sessions from anywhere.<br>
-                - Affordable Access: Quality mentorship doesn’t have to be expensive — we provide affordable plans.
-            </p>
-
-            <p>
-                At <strong>Mentor Connect</strong>, we don’t just connect people — we help build futures.
-            </p>
-        </section>
+            <h2>Get Involved</h2>
+            <p>Join us in making a difference! Whether you are looking to gain knowledge and skills or to share your
+                expertise and give back, Mentor Connect has a place for you. Sign up today and take the first step
+                towards
+                unlocking your potential.</p>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Mentor Connect. All rights reserved.</p>
+        <h2>Connect With Us</h2>
+        <p>Have questions or suggestions? We'd love to hear from you!</p>
+        <p>Email: <a href="mailto:info@mentorconnect.com">info@mentorconnect.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('visible');
+        });
+    </script>
 </body>
 
 </html>
