@@ -165,6 +165,58 @@
             background: #f0f4ff;
         }
 
+        .dark-mode {
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header {
+            background: linear-gradient(to right, #1e1e2e, #2e2e3e);
+            color: #ffffff;
+        }
+
+        .dark-mode .mentor-card {
+            background: #1e1e2e;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-mode .mentor-name {
+            color: #4f8cff;
+        }
+
+        .dark-mode .mentor-title {
+            color: #90b0ef;
+        }
+
+        .dark-mode .mentor-desc {
+            color: #cfcfcf;
+        }
+
+        .dark-mode .mentor-contact {
+            background: #3570e6;
+            color: #fff;
+        }
+
+        .dark-mode .mentor-contact:hover {
+            background: #4f8cff;
+        }
+
+        .mode-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 200;
+            transition: transform 0.2s;
+        }
+
+        .mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
         @media (max-width: 800px) {
             .mentor-grid {
                 grid-template-columns: 1fr 1fr;
@@ -196,6 +248,7 @@
 </head>
 
 <body>
+    <button id="mode-toggle" class="mode-toggle">🌙</button>
     <div class="hamburger" aria-label="Toggle menu">
         <svg viewBox="0 0 100 80" width="32" height="32">
             <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
@@ -277,6 +330,21 @@
         });
         sidebar.addEventListener('mouseleave', () => {
             sidebar.classList.remove('visible');
+        });
+        // Remove dark mode sync
+        document.addEventListener('DOMContentLoaded', function () {
+            const modeBtn = document.getElementById('mode-toggle');
+            if (modeBtn) {
+                modeBtn.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙';
+                modeBtn.addEventListener('click', function () {
+                    document.body.classList.toggle('dark-mode');
+                    if (document.body.classList.contains('dark-mode')) {
+                        modeBtn.textContent = '🌞';
+                    } else {
+                        modeBtn.textContent = '🌙';
+                    }
+                });
+            }
         });
     </script>
 </body>
