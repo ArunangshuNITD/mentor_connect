@@ -316,6 +316,100 @@
       margin: 1rem 0;
     }
 
+    /* How Students Connect with Mentors */
+    .connect-steps {
+      padding: 4rem 0;
+      background: #f0f4ff;
+    }
+
+    .connect-steps h2 {
+      text-align: center;
+      color: #3570e6;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .connect-steps img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+
+    .connect-steps ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .connect-steps ul li {
+      margin: 0.5rem 0;
+    }
+
+    /* Join As Student or Mentor Section */
+    .join-options {
+      padding: 4rem 0;
+      background: #fff;
+    }
+
+    .join-options h2 {
+      text-align: center;
+      color: #3570e6;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .join-options .option-card {
+      background: #f7faff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(180, 200, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .join-options .option-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 32px rgba(180, 200, 255, 0.2);
+    }
+
+    .join-options .option-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .join-options .option-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    .join-options .option-card p {
+      color: #555;
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+
+    .join-options .option-card a {
+      background: #3570e6;
+      color: #fff;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .join-options .option-card a:hover {
+      background: #4f8cff;
+    }
+
     /* Footer */
     footer {
       background: #23263a;
@@ -398,6 +492,89 @@
         display: block;
       }
     }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-box {
+      background: #fff;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .popup-box iframe {
+      margin-top: 1rem;
+      border-radius: 8px;
+    }
+
+    .popup-btn {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #1e3a8a;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #888;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .banner-ad {
+      animation: fadeIn 0.7s;
+    }
+
+    .banner-content {
+      animation: slideBanner 0.7s;
+    }
+
+    @keyframes slideBanner {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
 
@@ -437,6 +614,142 @@
       <p data-aos="fade-up" data-aos-delay="300">Empowering connections for learning and growth</p>
     </div>
   </header>
+
+  <!-- Dynamic Banner Ad Section (show two ads side by side) -->
+  <div id="bannerAd" class="banner-ad"
+    style="display:flex;justify-content:center;align-items:center;min-height:320px;margin:3rem 0 2rem 0;">
+    <div id="bannerPair" style="display:flex;gap:2rem;max-width:1100px;width:100%;justify-content:center;">
+      <!-- Ads will be injected here -->
+    </div>
+  </div>
+  <style>
+    .banner-content {
+      background: linear-gradient(135deg, #4f8cff 0%, #eaf4ff 100%);
+      padding: 2.5rem 2rem;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(80, 120, 255, 0.15);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      animation: slideBanner 0.7s;
+    }
+
+    .banner-content h3 {
+      color: #3570e6;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      z-index: 1;
+      position: relative;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px #eaf4ff;
+    }
+
+    .banner-content p {
+      color: #222;
+      font-size: 1.15rem;
+      margin-bottom: 1.2rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    .banner-content a {
+      background: #3570e6;
+      color: #fff;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 8px #4f8cff;
+      transition: background 0.2s;
+      z-index: 1;
+      position: relative;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    .banner-content .live-badge {
+      display: inline-block;
+      background: #e66942;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 0.7rem;
+      box-shadow: 0 2px 8px #e66942;
+      letter-spacing: 0.5px;
+    }
+  </style>
+  <script>
+    const bannerAds = [
+      {
+        title: '🎥 Live Mentor Lecture!',
+        desc: '<strong>Dr. Ramesh Sharma</strong> is going live on "Startup Strategies for Students".',
+        btn: 'Join Now',
+        link: '#',
+        live: true
+      },
+      {
+        title: '🚀 Hackathon Registration Open!',
+        desc: 'Participate in the annual Student Hackathon. Win prizes and mentorship.',
+        btn: 'Register',
+        link: '#',
+        live: false
+      },
+      {
+        title: '📢 New Mentor Added!',
+        desc: '<strong>Ms. Priya Verma</strong> joins Mentor Connect for Data Science guidance.',
+        btn: 'View Profile',
+        link: '#',
+        live: false
+      },
+      {
+        title: '📝 Resume Workshop!',
+        desc: 'Join our free resume building workshop this Friday. Limited seats available.',
+        btn: 'Sign Up',
+        link: '#',
+        live: false
+      },
+      {
+        title: '💡 Career Counseling Week!',
+        desc: 'Book 1-on-1 sessions with top mentors for career guidance. Slots filling fast!',
+        btn: 'Book Now',
+        link: '#',
+        live: false
+      },
+      {
+        title: '🎓 Scholarship Alert!',
+        desc: 'Apply for exclusive scholarships for Mentor Connect students. Deadline soon!',
+        btn: 'Apply',
+        link: '#',
+        live: false
+      }
+    ];
+    let currentPair = 0;
+    function showBannerPair(idx) {
+      const pair = [bannerAds[idx], bannerAds[(idx + 1) % bannerAds.length]];
+      const html = pair.map(ad => `
+        <div class="banner-content">
+          ${ad.live ? '<span class="live-badge">LIVE NOW</span>' : ''}
+          <h3>${ad.title}</h3>
+          <p>${ad.desc}</p>
+          <a href="${ad.link}">${ad.btn}</a>
+        </div>
+      `).join('');
+      document.getElementById('bannerPair').innerHTML = html;
+    }
+    setInterval(() => {
+      currentPair = (currentPair + 1) % bannerAds.length;
+      showBannerPair(currentPair);
+    }, 4000);
+    window.addEventListener('DOMContentLoaded', () => {
+      showBannerPair(0);
+    });
+  </script>
 
   <section class="features container" data-aos="fade-up">
     <h2>Why Mentor Connect?</h2>
@@ -542,6 +855,55 @@
     </div>
   </section>
 
+  <!-- How Students Connect with Mentors -->
+  <section class="connect-steps" data-aos="fade-up">
+    <div class="container">
+      <h2 style="text-align:center;color:#3570e6;margin-bottom:2rem;">How Students Connect with Mentors</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center;">
+        <img src="https://undraw.co/api/illustrations/0290e000-2609-4e46-a47e-1356e344d14c"
+          alt="Connection illustration" style="width:300px;max-width:100%;">
+        <ul style="list-style:none;font-size:1.1rem;color:#444;">
+          <li>✅ Browse mentor profiles based on your interest</li>
+          <li>✅ Use smart filters to find the best fit</li>
+          <li>✅ Send a request and chat with your mentor</li>
+          <li>✅ Schedule calls or get guidance via chat</li>
+          <li>✅ Track your growth and set goals</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join As Student or Mentor Section -->
+  <section class="join-options" data-aos="fade-up">
+    <div class="container">
+      <h2 style="text-align:center;color:#3570e6;margin-bottom:2rem;">Get Started Today</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;">
+        <div
+          style="background:#f0f4ff;padding:2rem;border-radius:12px;flex:1;min-width:280px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:transform 0.3s;"
+          onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://undraw.co/api/illustrations/7e40fd41-0f04-40ec-9d70-6ebf97361aa5" alt="Student"
+            style="height:150px;margin-bottom:1rem;">
+          <h3 style="color:#222;">I'm a Student</h3>
+          <p style="color:#555;margin:1rem 0;">Find mentors who can guide you in your journey.</p>
+          <a href="join-student.html"
+            style="background:#3570e6;color:#fff;padding:0.6rem 1.5rem;border-radius:8px;font-weight:600;display:inline-block;transition:background 0.3s;">Join
+            as Student</a>
+        </div>
+        <div
+          style="background:#fff4f0;padding:2rem;border-radius:12px;flex:1;min-width:280px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:transform 0.3s;"
+          onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://undraw.co/api/illustrations/cc9578bb-4e04-4455-b9c2-3f3b402f7a74" alt="Mentor"
+            style="height:150px;margin-bottom:1rem;">
+          <h3 style="color:#222;">I'm a Mentor</h3>
+          <p style="color:#555;margin:1rem 0;">Help students grow by sharing your knowledge.</p>
+          <a href="join-mentor.html"
+            style="background:#e66942;color:#fff;padding:0.6rem 1.5rem;border-radius:8px;font-weight:600;display:inline-block;transition:background 0.3s;">Join
+            as Mentor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <div class="footer-bottom">
@@ -554,6 +916,66 @@
       </div>
     </div>
   </footer>
+
+  <!-- AI Chatbot Widget (ChatGPT API integration) -->
+  <div id="chatbotWidget" style="position:fixed;bottom:32px;right:32px;z-index:9999;">
+    <button id="chatbotToggle"
+      style="background:#3570e6;color:#fff;border:none;border-radius:50%;width:56px;height:56px;box-shadow:0 4px 16px rgba(53,112,230,0.18);font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">💬</button>
+    <div id="chatbotBox"
+      style="display:none;flex-direction:column;width:320px;max-width:90vw;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(53,112,230,0.18);padding:1rem 0.5rem;position:relative;">
+      <div style="font-weight:700;color:#3570e6;text-align:center;margin-bottom:0.5rem;font-size:1.1rem;">MentorConnect
+        AI Chatbot</div>
+      <div id="chatbotMessages"
+        style="height:220px;overflow-y:auto;padding:0.5rem 0.2rem 0.5rem 0.2rem;background:#f7faff;border-radius:8px;margin-bottom:0.7rem;font-size:0.98rem;">
+      </div>
+      <form id="chatbotForm" style="display:flex;gap:0.5rem;">
+        <input id="chatbotInput" type="text" placeholder="Ask anything..." autocomplete="off"
+          style="flex:1;padding:0.5rem 0.7rem;border-radius:8px;border:1px solid #cbe2ff;font-size:1rem;" />
+        <button type="submit"
+          style="background:#3570e6;color:#fff;border:none;border-radius:8px;padding:0.5rem 1rem;font-weight:600;cursor:pointer;">Send</button>
+      </form>
+      <button id="chatbotClose"
+        style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:1.2rem;color:#888;cursor:pointer;">×</button>
+    </div>
+  </div>
+  <script>
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotBox = document.getElementById('chatbotBox');
+    const chatbotClose = document.getElementById('chatbotClose');
+    chatbotToggle.onclick = () => chatbotBox.style.display = 'flex';
+    chatbotClose.onclick = () => chatbotBox.style.display = 'none';
+
+    const chatbotForm = document.getElementById('chatbotForm');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    chatbotForm.onsubmit = async function (e) {
+      e.preventDefault();
+      const userMsg = chatbotInput.value.trim();
+      if (!userMsg) return;
+      chatbotMessages.innerHTML += `<div style='margin-bottom:0.4rem;text-align:right;'><span style='background:#3570e6;color:#fff;padding:0.4rem 0.8rem;border-radius:8px;display:inline-block;'>${userMsg}</span></div>`;
+      chatbotInput.value = '';
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      // Show loading
+      chatbotMessages.innerHTML += `<div id='chatbotLoading' style='margin-bottom:0.4rem;text-align:left;'><span style='background:#eaf4ff;color:#3570e6;padding:0.4rem 0.8rem;border-radius:8px;display:inline-block;'>Thinking...</span></div>`;
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      // Call backend API
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: userMsg })
+        });
+        const data = await res.json();
+        document.getElementById('chatbotLoading').remove();
+        chatbotMessages.innerHTML += `<div style='margin-bottom:0.4rem;text-align:left;'><span style='background:#eaf4ff;color:#3570e6;padding:0.4rem 0.8rem;border-radius:8px;display:inline-block;'>${data.reply}</span></div>`;
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      } catch (err) {
+        document.getElementById('chatbotLoading').remove();
+        chatbotMessages.innerHTML += `<div style='margin-bottom:0.4rem;text-align:left;'><span style='background:#ffeaea;color:#e66942;padding:0.4rem 0.8rem;border-radius:8px;display:inline-block;'>Sorry, there was an error. Please try again.</span></div>`;
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
+    };
+  </script>
 
   <!-- JS dependencies -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -584,6 +1006,7 @@
     function animateValue(id, start, end, duration) {
       const obj = document.getElementById(id);
       let startTime = null;
+
       function step(timestamp) {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
