@@ -47,24 +47,19 @@
         }
 
         .sidebar {
-            width: 220px;
-            min-height: 100vh;
-            background: #f7faff;
-            box-shadow: 2px 0 8px rgba(180, 200, 255, 0.08);
-            padding: 2rem 1rem;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 3rem 1rem 2rem;
             position: fixed;
-            left: 0;
+            left: -250px;
             top: 0;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            z-index: 100;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar.visible {
-            transform: translateX(0);
+            z-index: 1000;
+            transition: left 0.3s ease;
         }
 
         .sidebar ul {
@@ -75,26 +70,24 @@
         }
 
         .sidebar ul li {
-            margin-bottom: 1.2rem;
+            margin: 1.5rem 0;
             width: 100%;
         }
 
         .sidebar ul li a {
             text-decoration: none;
             color: #3570e6;
-            font-weight: 600;
-            font-size: 1.08rem;
+            font-weight: 500;
+            font-size: 1.1rem;
             display: block;
-            padding: 0.7rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 8px;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(180, 200, 255, 0.04);
+            transition: background 0.2s;
         }
 
         .sidebar ul li a:hover {
             background: #dbeaff;
             color: #4f8cff;
-            box-shadow: 0 4px 16px rgba(180, 200, 255, 0.10);
         }
 
         main {
@@ -192,19 +185,29 @@
 </head>
 
 <body>
-    <button class="hamburger" aria-label="Toggle menu">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+    <div class="hamburger" aria-label="Toggle menu"
+        style="position:fixed;top:1rem;left:1rem;width:40px;height:40px;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:200;background:transparent;border:none;">
+        <svg viewBox="0 0 100 80" width="32" height="32">
+            <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="30" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
         </svg>
-    </button>
-
-    <div class="sidebar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="find_mentor.html">Find a Mentor</a></li>
-            <li><a href="#">Become a Mentor</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+    </div>
+    <div class="sidebar"
+        style="position:fixed;top:0;left:-250px;width:250px;height:100%;background:#fff;box-shadow:2px 0 5px rgba(0,0,0,0.1);transition:left 0.3s ease;z-index:1000;">
+        <ul style="list-style:none;padding:0;margin:0;padding-top:3rem;">
+            <li style="margin:1.5rem 0;"><a href="index.html"
+                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">Home</a>
+            </li>
+            <li style="margin:1.5rem 0;"><a href="find_mentor.html"
+                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">Find
+                    Mentor</a></li>
+            <li style="margin:1.5rem 0;"><a href="about.html"
+                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">About</a>
+            </li>
+            <li style="margin:1.5rem 0;"><a href="contact.html"
+                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">Contact</a>
+            </li>
         </ul>
     </div>
 
@@ -257,10 +260,10 @@
         const sidebar = document.querySelector('.sidebar');
 
         hamburger.addEventListener('mouseenter', () => {
-            sidebar.classList.add('visible');
+            sidebar.style.left = '0';
         });
         sidebar.addEventListener('mouseleave', () => {
-            sidebar.classList.remove('visible');
+            sidebar.style.left = '-250px';
         });
     </script>
 </body>

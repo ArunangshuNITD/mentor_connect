@@ -369,10 +369,10 @@
         const hamburger = document.querySelector('.hamburger');
         const sidebar = document.querySelector('.sidebar');
         hamburger.addEventListener('mouseenter', () => {
-            sidebar.classList.add('visible');
+            sidebar.style.left = '0';
         });
         sidebar.addEventListener('mouseleave', () => {
-            sidebar.classList.remove('visible');
+            sidebar.style.left = '-250px';
         });
         // Remove dark mode sync
         document.addEventListener('DOMContentLoaded', function () {
