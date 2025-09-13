@@ -2,11 +2,76 @@
 <html lang="en">
 
 <head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - Mentor Connect</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 8px rgba(53, 112, 230, 0.10);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding-top: 3rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1.5rem 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #3570e6;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #eaf4ff;
+            color: #4f8cff;
+        }
+
+        .sidebar-dropdown {
+            position: relative;
+        }
+
+        .sidebar-dropdown .dropdown-content {
+            display: none;
+            position: static;
+            background: #f7faff;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .sidebar-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                width: 80vw;
+                left: -80vw;
+            }
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -185,6 +250,7 @@
 </head>
 
 <body>
+    <!-- Sidebar Navigation -->
     <div class="hamburger" aria-label="Toggle menu"
         style="position:fixed;top:1rem;left:1rem;width:40px;height:40px;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:200;background:transparent;border:none;">
         <svg viewBox="0 0 100 80" width="32" height="32">
@@ -193,23 +259,162 @@
             <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
         </svg>
     </div>
-    <div class="sidebar"
-        style="position:fixed;top:0;left:-250px;width:250px;height:100%;background:#fff;box-shadow:2px 0 5px rgba(0,0,0,0.1);transition:left 0.3s ease;z-index:1000;">
-        <ul style="list-style:none;padding:0;margin:0;padding-top:3rem;">
-            <li style="margin:1.5rem 0;"><a href="index.html"
-                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">Home</a>
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="sidebar-dropdown">
+                <a href="#" onclick="return false;">Mentor <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="find_mentor.html">Find a Mentor</a></li>
+                    <li><a href="become_mentor.html">Become a Mentor</a></li>
+                </ul>
             </li>
-            <li style="margin:1.5rem 0;"><a href="find_mentor.html"
-                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">Find
-                    Mentor</a></li>
-            <li style="margin:1.5rem 0;"><a href="about.html"
-                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">About</a>
-            </li>
-            <li style="margin:1.5rem 0;"><a href="contact.html"
-                    style="text-decoration:none;color:#3570e6;font-weight:500;font-size:1.1rem;padding:0.5rem 1rem;display:block;transition:background 0.2s;">Contact</a>
-            </li>
+            <li><a href="student_section.html">Student Section</a></li>
         </ul>
-    </div>
+    </nav>
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 8px rgba(53, 112, 230, 0.10);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding-top: 3rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1.5rem 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #3570e6;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #eaf4ff;
+            color: #4f8cff;
+        }
+
+        .sidebar-dropdown {
+            position: relative;
+        }
+
+        .sidebar-dropdown .dropdown-content {
+            display: none;
+            position: static;
+            background: #f7faff;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .sidebar-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                width: 80vw;
+                left: -80vw;
+            }
+        }
+    </style>
+    <script>
+    </script>
+    <!-- New Navbar -->
+    <nav class="navbar">
+        <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+            <div class="nav-logo" style="font-weight:700;font-size:1.3rem;color:#3570e6;">Mentor Connect</div>
+            <ul class="nav-links" style="display:flex;gap:2rem;list-style:none;margin:0;padding:0;align-items:center;">
+                <li><a href="index.html" style="color:#3570e6;font-weight:500;font-size:1.08rem;">Home</a></li>
+                <li><a href="contact.html" style="color:#3570e6;font-weight:500;font-size:1.08rem;">Contact</a></li>
+                <li class="nav-mentor" style="position:relative;">
+                    <a href="#" style="color:#3570e6;font-weight:500;font-size:1.08rem;">Mentor <i
+                            class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown"
+                        style="position:absolute;top:2.2rem;left:0;background:#fff;border-radius:8px;box-shadow:0 4px 16px rgba(53,112,230,0.10);padding:0.5rem 0;min-width:180px;display:none;z-index:100;">
+                        <li><a href="find_mentor.html"
+                                style="color:#3570e6;font-weight:500;padding:0.6rem 1.2rem;display:block;">Find a
+                                Mentor</a></li>
+                        <li><a href="become_mentor.html"
+                                style="color:#3570e6;font-weight:500;padding:0.6rem 1.2rem;display:block;">Become a
+                                Mentor</a></li>
+                    </ul>
+                </li>
+                <li><a href="student_section.html" style="color:#3570e6;font-weight:500;font-size:1.08rem;">Student
+                        Section</a></li>
+            </ul>
+        </div>
+    </nav>
+    <style>
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(53, 112, 230, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        .navbar .nav-links li {
+            position: relative;
+        }
+
+        .navbar .nav-links li a {
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-links li a:hover {
+            background: #eaf4ff;
+            color: #4f8cff;
+        }
+
+        .navbar .nav-links .nav-mentor:hover .dropdown,
+        .navbar .nav-links .nav-mentor:focus-within .dropdown {
+            display: block;
+        }
+
+        .navbar .dropdown li a {
+            font-size: 1rem;
+            border-radius: 0;
+        }
+
+        .navbar .dropdown li a:hover {
+            background: #f0f4ff;
+            color: #3570e6;
+        }
+
+        @media (max-width: 700px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navbar .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
 
     <main>
         <div class="about-section">

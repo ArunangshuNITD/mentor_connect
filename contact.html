@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mentor Connect | Contact Us</title>
@@ -223,21 +225,148 @@
 </head>
 
 <body>
-
-    <!-- Sidebar Toggle -->
-    <div class="hamburger" onclick="toggleSidebar()">
-        <i class="fas fa-bars fa-2x" style="color:#2563eb;"></i>
+    <!-- Sidebar Navigation -->
+    <div class="hamburger" aria-label="Toggle menu"
+        style="position:fixed;top:1rem;left:1rem;width:40px;height:40px;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:200;background:transparent;border:none;">
+        <svg viewBox="0 0 100 80" width="32" height="32">
+            <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="30" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+        </svg>
     </div>
-
     <nav class="sidebar" id="sidebar">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="find_mentor.html">Find a Mentor</a></li>
-            <li><a href="#">Become a Mentor</a></li>
-            <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li class="sidebar-dropdown">
+                <a href="#" onclick="return false;">Mentor <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="find_mentor.html">Find a Mentor</a></li>
+                    <li><a href="become_mentor.html">Become a Mentor</a></li>
+                </ul>
+            </li>
+            <li><a href="student_section.html">Student Section</a></li>
         </ul>
     </nav>
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 8px rgba(53, 112, 230, 0.10);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding-top: 3rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1.5rem 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #3570e6;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #eaf4ff;
+            color: #4f8cff;
+        }
+
+        .sidebar-dropdown {
+            position: relative;
+        }
+
+        .sidebar-dropdown .dropdown-content {
+            display: none;
+            position: static;
+            background: #f7faff;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .sidebar-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                width: 80vw;
+                left: -80vw;
+            }
+        }
+    </style>
+    <script>
+    </script>
+
+
+    <style>
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(53, 112, 230, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        .navbar .nav-links li {
+            position: relative;
+        }
+
+        .navbar .nav-links li a {
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-links li a:hover {
+            background: #eaf4ff;
+            color: #4f8cff;
+        }
+
+        .navbar .nav-links .nav-mentor:hover .dropdown,
+        .navbar .nav-links .nav-mentor:focus-within .dropdown {
+            display: block;
+        }
+
+        .navbar .dropdown li a {
+            font-size: 1rem;
+            border-radius: 0;
+        }
+
+        .navbar .dropdown li a:hover {
+            background: #f0f4ff;
+            color: #3570e6;
+        }
+
+        @media (max-width: 700px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navbar .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
 
     <header>
         <h1>Mentor Connect</h1>
@@ -328,63 +457,44 @@
         </div>
         <!-- End of .container -->
 
-        <!-- FAQ Section moved to bottom -->
-        <section class="faq" style="padding:2rem 0;background:#fff;">
+
+        <!-- Modern Footer -->
+        <footer>
             <div class="container">
-                <h2 style="color:#3570e6;text-align:center;margin-bottom:2rem;">Frequently Asked Questions</h2>
-                <div class="faq-item"
-                    style="max-width:800px;margin:1rem auto;border-bottom:1px solid #ddd;padding-bottom:1rem;">
-                    <div class="faq-question"
-                        style="cursor:pointer;font-weight:600;font-size:1.2rem;display:flex;justify-content:space-between;align-items:center;color:#3570e6;">
-                        <span>How do I find a mentor?</span> <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer"
-                        style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding-left:1rem;">
-                        <p style="color:#555;margin:1rem 0;">Click on "Find Mentor" from the navigation and browse
-                            through
-                            expert mentor profiles. Use filters to match your needs.</p>
-                    </div>
-                </div>
-                <div class="faq-item"
-                    style="max-width:800px;margin:1rem auto;border-bottom:1px solid #ddd;padding-bottom:1rem;">
-                    <div class="faq-question"
-                        style="cursor:pointer;font-weight:600;font-size:1.2rem;display:flex;justify-content:space-between;align-items:center;color:#3570e6;">
-                        <span>Can I become a mentor?</span> <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer"
-                        style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding-left:1rem;">
-                        <p style="color:#555;margin:1rem 0;">Yes! Sign up as a mentor, share your expertise, and guide
-                            others in their learning journey.</p>
-                    </div>
-                </div>
-                <div class="faq-item"
-                    style="max-width:800px;margin:1rem auto;border-bottom:1px solid #ddd;padding-bottom:1rem;">
-                    <div class="faq-question"
-                        style="cursor:pointer;font-weight:600;font-size:1.2rem;display:flex;justify-content:space-between;align-items:center;color:#3570e6;">
-                        <span>Is Mentor Connect free?</span> <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer"
-                        style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding-left:1rem;">
-                        <p style="color:#555;margin:1rem 0;">We offer free access to basic features. Premium plans with
-                            advanced features are available for power users.</p>
-                    </div>
-                </div>
-                <div class="faq-item"
-                    style="max-width:800px;margin:1rem auto;border-bottom:1px solid #ddd;padding-bottom:1rem;">
-                    <div class="faq-question"
-                        style="cursor:pointer;font-weight:600;font-size:1.2rem;display:flex;justify-content:space-between;align-items:center;color:#3570e6;">
-                        <span>How do I contact support?</span> <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer"
-                        style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding-left:1rem;">
-                        <p style="color:#555;margin:1rem 0;">You can reach us via contact page, or email
-                            mentorconnect@support.com for help.</p>
-                    </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Mentor Connect. All rights reserved.</p>
+                    <p>
+                        <a href="#">Privacy Policy</a> |
+                        <a href="#">Terms of Service</a> |
+                        <a href="#">Contact Us</a>
+                    </p>
                 </div>
             </div>
-        </section>
-
         </footer>
+        <style>
+            footer {
+                background: #23263a;
+                color: #eaf4ff;
+                padding: 2rem 0;
+            }
+
+            footer .footer-bottom {
+                text-align: center;
+                font-size: 0.9rem;
+                color: #aaa;
+            }
+
+            footer .footer-bottom a {
+                color: #4f8cff;
+                margin: 0 0.5rem;
+                transition: color 0.3s;
+                text-decoration: none;
+            }
+
+            footer .footer-bottom a:hover {
+                color: #90b0ef;
+            }
+        </style>
 
         <!-- JS Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

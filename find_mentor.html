@@ -2,11 +2,76 @@
 <html lang="en">
 
 <head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find a Mentor - Mentor Connect</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 8px rgba(53, 112, 230, 0.10);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding-top: 3rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1.5rem 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #3570e6;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #eaf4ff;
+            color: #4f8cff;
+        }
+
+        .sidebar-dropdown {
+            position: relative;
+        }
+
+        .sidebar-dropdown .dropdown-content {
+            display: none;
+            position: static;
+            background: #f7faff;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .sidebar-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                width: 80vw;
+                left: -80vw;
+            }
+        }
+
         body {
             font-family: 'Inter', Arial, sans-serif;
             background: #fafdff;
@@ -267,6 +332,95 @@
 </head>
 
 <body>
+    <!-- Sidebar Navigation -->
+    <div class="hamburger" aria-label="Toggle menu"
+        style="position:fixed;top:1rem;left:1rem;width:40px;height:40px;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:200;background:transparent;border:none;">
+        <svg viewBox="0 0 100 80" width="32" height="32">
+            <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="30" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+            <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
+        </svg>
+    </div>
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="sidebar-dropdown">
+                <a href="#" onclick="return false;">Mentor <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="find_mentor.html">Find a Mentor</a></li>
+                    <li><a href="become_mentor.html">Become a Mentor</a></li>
+                </ul>
+            </li>
+            <li><a href="student_section.html">Student Section</a></li>
+        </ul>
+    </nav>
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 8px rgba(53, 112, 230, 0.10);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding-top: 3rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1.5rem 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #3570e6;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #eaf4ff;
+            color: #4f8cff;
+        }
+
+        .sidebar-dropdown {
+            position: relative;
+        }
+
+        .sidebar-dropdown .dropdown-content {
+            display: none;
+            position: static;
+            background: #f7faff;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .sidebar-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                width: 80vw;
+                left: -80vw;
+            }
+        }
+    </style>
+    <script>
+    </script>
     <button id="mode-toggle" class="mode-toggle">🌙</button>
     <div class="hamburger" aria-label="Toggle menu">
         <svg viewBox="0 0 100 80" width="32" height="32">
