@@ -2,76 +2,12 @@
 <html lang="en">
 
 <head>
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find a Mentor - Mentor Connect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background: #fff;
-            box-shadow: 2px 0 8px rgba(53, 112, 230, 0.10);
-            transition: left 0.3s ease;
-            z-index: 1000;
-            padding-top: 3rem;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar ul li {
-            margin: 1.5rem 0;
-        }
-
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #3570e6;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            display: block;
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-
-        .sidebar ul li a:hover {
-            background: #eaf4ff;
-            color: #4f8cff;
-        }
-
-        .sidebar-dropdown {
-            position: relative;
-        }
-
-        .sidebar-dropdown .dropdown-content {
-            display: none;
-            position: static;
-            background: #f7faff;
-            border-radius: 8px;
-            margin-top: 0.5rem;
-            padding-left: 1rem;
-        }
-
-        .sidebar-dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        @media (max-width: 700px) {
-            .sidebar {
-                width: 80vw;
-                left: -80vw;
-            }
-        }
-
         body {
             font-family: 'Inter', Arial, sans-serif;
             background: #fafdff;
@@ -100,6 +36,57 @@
             margin-bottom: 0.5rem;
         }
 
+        /* New Tab Styles */
+        .tabs-container {
+            max-width: 1100px;
+            margin: 2rem auto 0;
+            padding: 0 1rem;
+            text-align: center;
+            border-bottom: 1px solid #cbe2ff;
+        }
+
+        .tab-link {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4f8cff;
+            border-bottom: 3px solid transparent;
+            transition: color 0.2s, border-bottom 0.2s;
+            margin-bottom: -1px; /* To align with the container border */
+        }
+
+        .tab-link:hover {
+            color: #3570e6;
+        }
+
+        .tab-link.active {
+            color: #3570e6;
+            border-bottom: 3px solid #3570e6;
+        }
+
+        .tab-content {
+            display: none;
+        }
+        
+        /* Section Heading styles for Department/Company view */
+        .mentor-section-heading {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3570e6;
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eaf4ff;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
         .mentor-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -108,7 +95,28 @@
             margin: 2.5rem auto;
             padding: 0 1rem;
             box-sizing: border-box;
-            overflow: hidden;
+        }
+
+        /* Scrollable Grid for All Mentors Tab */
+        #allMentors .mentor-grid {
+             max-height: 70vh;
+             overflow-y: auto;
+             scrollbar-width: thin;
+             scrollbar-color: #90b0ef #eaf4ff;
+        }
+       
+        #allMentors .mentor-grid::-webkit-scrollbar {
+             width: 8px;
+        }
+        
+        #allMentors .mentor-grid::-webkit-scrollbar-thumb {
+             background: #90b0ef;
+             border-radius: 8px;
+        }
+        
+        #allMentors .mentor-grid::-webkit-scrollbar-track {
+             background: #eaf4ff;
+             border-radius: 8px;
         }
 
         .mentor-card {
@@ -118,8 +126,6 @@
             padding: 2rem 1.5rem 1.5rem 1.5rem;
             text-align: center;
             transition: box-shadow 0.2s, transform 0.2s;
-            min-width: 0;
-            overflow: hidden;
         }
 
         .mentor-card:hover {
@@ -141,21 +147,19 @@
             font-weight: 600;
             color: #3570e6;
             margin-bottom: 0.3rem;
-            word-break: break-word;
         }
 
         .mentor-title {
             font-size: 1.05rem;
             color: #4f8cff;
             margin-bottom: 0.7rem;
-            word-break: break-word;
         }
 
         .mentor-desc {
             font-size: 0.98rem;
             color: #444;
             margin-bottom: 1.2rem;
-            word-break: break-word;
+            min-height: 50px; /* Ensures consistent card height */
         }
 
         .mentor-contact {
@@ -174,188 +178,7 @@
             background: #4f8cff;
         }
 
-        .hamburger {
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 200;
-            background: transparent;
-            border: none;
-            transition: opacity 0.2s;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: left 0.3s ease;
-            z-index: 1000;
-        }
-
-        .sidebar.visible {
-            left: 0;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            padding-top: 3rem;
-        }
-
-        .sidebar li {
-            margin: 1.5rem 0;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: #3570e6;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            display: block;
-            transition: background 0.2s;
-        }
-
-        .sidebar a:hover {
-            background: #f0f4ff;
-        }
-
-        footer {
-            background: #eaf4ff;
-            color: #3570e6;
-            text-align: center;
-            padding: 2rem 1rem 1rem 1rem;
-            font-size: 0.95rem;
-            border-top: 1px solid #cbe2ff;
-            margin-top: 3rem;
-        }
-
-        .footer-content a {
-            color: #3570e6 !important;
-        }
-
-        .footer-content a:hover {
-            color: #4f8cff !important;
-        }
-
-        .dark-mode {
-            background: #121212;
-            color: #e0e0e0;
-        }
-
-        .dark-mode header {
-            background: linear-gradient(to right, #1e1e2e, #2e2e3e);
-            color: #ffffff;
-        }
-
-        .dark-mode .mentor-card {
-            background: #1e1e2e;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .dark-mode .mentor-name {
-            color: #4f8cff;
-        }
-
-        .dark-mode .mentor-title {
-            color: #90b0ef;
-        }
-
-        .dark-mode .mentor-desc {
-            color: #cfcfcf;
-        }
-
-        .dark-mode .mentor-contact {
-            background: #3570e6;
-            color: #fff;
-        }
-
-        .dark-mode .mentor-contact:hover {
-            background: #4f8cff;
-        }
-
-        .mode-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            z-index: 200;
-            transition: transform 0.2s;
-        }
-
-        .mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        @media (max-width: 800px) {
-            .mentor-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.2rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .mentor-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-
-            header h1 {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (min-width: 801px) {
-            .hamburger {
-                display: flex;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Sidebar Navigation -->
-    <div class="hamburger" aria-label="Toggle menu"
-        style="position:fixed;top:1rem;left:1rem;width:40px;height:40px;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:200;background:transparent;border:none;">
-        <svg viewBox="0 0 100 80" width="32" height="32">
-            <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
-            <rect y="30" width="100" height="15" rx="8" fill="#4f8cff"></rect>
-            <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
-        </svg>
-    </div>
-    <nav class="sidebar" id="sidebar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li class="sidebar-dropdown">
-                <a href="#" onclick="return false;">Mentor <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="find_mentor.html">Find a Mentor</a></li>
-                    <li><a href="become_mentor.html">Become a Mentor</a></li>
-                </ul>
-            </li>
-            <li><a href="student_section.html">Student Section</a></li>
-        </ul>
-    </nav>
-    <style>
+        /* Sidebar */
         .sidebar {
             position: fixed;
             top: 0;
@@ -401,7 +224,6 @@
 
         .sidebar-dropdown .dropdown-content {
             display: none;
-            position: static;
             background: #f7faff;
             border-radius: 8px;
             margin-top: 0.5rem;
@@ -411,17 +233,162 @@
         .sidebar-dropdown:hover .dropdown-content {
             display: block;
         }
+        
+        .hamburger {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2000;
+            background: transparent;
+            border: none;
+        }
 
+        /* Footer */
+        footer {
+            background: #eaf4ff;
+            color: #3570e6;
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+            font-size: 0.95rem;
+            border-top: 1px solid #cbe2ff;
+            margin-top: 3rem;
+        }
+
+        .footer-content a {
+            color: #3570e6 !important;
+        }
+
+        .footer-content a:hover {
+            color: #4f8cff !important;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header {
+            background: linear-gradient(to right, #1e1e2e, #2e2e3e);
+            color: #ffffff;
+        }
+
+        .dark-mode .tabs-container {
+            border-bottom: 1px solid #2e2e3e;
+        }
+
+        .dark-mode .tab-link {
+            color: #90b0ef;
+        }
+        
+        .dark-mode .tab-link:hover {
+            color: #ffffff;
+        }
+
+        .dark-mode .tab-link.active {
+            color: #ffffff;
+            border-bottom: 3px solid #4f8cff;
+        }
+        
+        .dark-mode .mentor-section-heading {
+             color: #4f8cff;
+             border-bottom: 2px solid #1e1e2e;
+        }
+
+        .dark-mode .mentor-card {
+            background: #1e1e2e;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-mode .mentor-name {
+            color: #4f8cff;
+        }
+
+        .dark-mode .mentor-title {
+            color: #90b0ef;
+        }
+
+        .dark-mode .mentor-desc {
+            color: #cfcfcf;
+        }
+
+        .dark-mode .mentor-contact {
+            background: #3570e6;
+        }
+
+        .dark-mode .mentor-contact:hover {
+            background: #4f8cff;
+        }
+        
+        .dark-mode footer {
+            background: #1e1e2e;
+            color: #90b0ef;
+            border-top: 1px solid #2e2e3e;
+        }
+
+        .dark-mode .footer-content a {
+            color: #90b0ef !important;
+        }
+
+        .dark-mode .footer-content a:hover {
+            color: #ffffff !important;
+        }
+
+        .mode-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 2000;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 800px) {
+            .mentor-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+            }
+        }
+        
         @media (max-width: 700px) {
-            .sidebar {
-                width: 80vw;
-                left: -80vw;
+             .sidebar {
+                 width: 80vw;
+                 left: -80vw;
+             }
+        }
+
+        @media (max-width: 600px) {
+            .mentor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .tabs-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .tab-link {
+                font-size: 1rem;
+                padding: 0.6rem 1rem;
             }
         }
     </style>
-    <script>
-    </script>
-    <button id="mode-toggle" class="mode-toggle">🌙</button>
+</head>
+
+<body>
+
     <div class="hamburger" aria-label="Toggle menu">
         <svg viewBox="0 0 100 80" width="32" height="32">
             <rect width="100" height="15" rx="8" fill="#4f8cff"></rect>
@@ -429,26 +396,34 @@
             <rect y="60" width="100" height="15" rx="8" fill="#4f8cff"></rect>
         </svg>
     </div>
-    <div class="sidebar">
+
+    <nav class="sidebar" id="sidebar">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="find_mentor.html">Find a Mentor</a></li>
-            <li><a href="#">Become a Mentor</a></li>
-            <li><a href="about.html">About</a></li>
+            <li class="sidebar-dropdown">
+                <a href="#" onclick="return false;">Mentor</a>
+                <ul class="dropdown-content">
+                    <li><a href="find_mentor.html">Find a Mentor</a></li>
+                    <li><a href="become_mentor.html">Become a Mentor</a></li>
+                </ul>
+            </li>
+            <li><a href="student_section.html">Student Section</a></li>
+            <li><a href="cv_review.html">CV Review</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
-    </div>
+    </nav>
+
+    <button id="mode-toggle" class="mode-toggle">🌙</button>
+
     <header>
         <h1>Find a Mentor</h1>
         <p>Browse our expert mentors and connect for guidance and growth.</p>
     </header>
+
     <main>
-        <div
-            style="max-width: 700px; margin: 2rem auto 0 auto; display: flex; gap: 1rem; align-items: center; justify-content: center;">
-            <input type="text" id="mentor-search" placeholder="Search mentors by name, title, or skill..."
-                style="flex:2; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #cbe2ff; font-size: 1.05rem; margin-bottom: 1rem; box-sizing: border-box;">
-            <select id="branch-filter"
-                style="flex:1; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #cbe2ff; font-size: 1.05rem; margin-bottom: 1rem; box-sizing: border-box; min-width: 180px;">
+        <div style="max-width: 700px; margin: 2rem auto 0 auto; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; padding: 0 1rem;">
+            <input type="text" id="mentor-search" placeholder="Search mentors by name, title, or skill..." style="flex:2; min-width: 250px; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #cbe2ff; font-size: 1.05rem; box-sizing: border-box;">
+            <select id="branch-filter" style="flex:1; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #cbe2ff; font-size: 1.05rem; box-sizing: border-box; min-width: 180px;">
                 <option value="">All Branches</option>
                 <option value="Web Development">Web Development</option>
                 <option value="Data Science">Data Science</option>
@@ -456,109 +431,182 @@
                 <option value="UX Design">UX Design</option>
                 <option value="Cybersecurity">Cybersecurity</option>
                 <option value="AI Research">AI Research</option>
+                <option value="Cloud Engineering">Cloud Engineering</option>
             </select>
         </div>
-        <div class="mentor-grid" id="mentor-grid">
-            <div class="mentor-card">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mentor Photo" class="mentor-photo">
-                <div class="mentor-name">John Doe</div>
-                <div class="mentor-title">Software Engineer, Google</div>
-                <div class="mentor-desc">Specializes in web development, JavaScript, and career guidance for aspiring
-                    engineers.</div>
-                <a href="mailto:johndoe@email.com" class="mentor-contact">Contact</a>
-            </div>
-            <div class="mentor-card">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mentor Photo" class="mentor-photo">
-                <div class="mentor-name">Priya Sharma</div>
-                <div class="mentor-title">Data Scientist, Microsoft</div>
-                <div class="mentor-desc">Expert in machine learning, Python, and helping students break into data
-                    science roles.</div>
-                <a href="mailto:priya@email.com" class="mentor-contact">Contact</a>
-            </div>
-            <div class="mentor-card">
-                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Mentor Photo" class="mentor-photo">
-                <div class="mentor-name">Alex Kim</div>
-                <div class="mentor-title">Product Manager, Amazon</div>
-                <div class="mentor-desc">Guides on product management, tech interviews, and building leadership skills.
-                </div>
-                <a href="mailto:alex@email.com" class="mentor-contact">Contact</a>
-            </div>
-            <div class="mentor-card">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mentor Photo" class="mentor-photo">
-                <div class="mentor-name">Emily Chen</div>
-                <div class="mentor-title">UX Designer, Adobe</div>
-                <div class="mentor-desc">Passionate about user experience, portfolio reviews, and creative career
-                    advice.
-                </div>
-                <a href="mailto:emily@email.com" class="mentor-contact">Contact</a>
-            </div>
-            <div class="mentor-card">
-                <img src="https://randomuser.me/api/portraits/men/21.jpg" alt="Mentor Photo" class="mentor-photo">
-                <div class="mentor-name">Carlos Rivera</div>
-                <div class="mentor-title">Cybersecurity Analyst, Cisco</div>
-                <div class="mentor-desc">Helps students understand cybersecurity fundamentals and certifications.
-                </div>
-                <a href="mailto:carlos@email.com" class="mentor-contact">Contact</a>
-            </div>
-            <div class="mentor-card">
-                <img src="https://randomuser.me/api/portraits/women/53.jpg" alt="Mentor Photo" class="mentor-photo">
-                <div class="mentor-name">Fatima Al-Farsi</div>
-                <div class="mentor-title">AI Researcher, DeepMind</div>
-                <div class="mentor-desc">Guides on AI research, publishing papers, and advanced machine learning topics.
-                </div>
-                <a href="mailto:fatima@email.com" class="mentor-contact">Contact</a>
-            </div>
+
+        <div class="tabs-container">
+            <button class="tab-link active" onclick="openTab(event, 'allMentors')">All Mentors</button>
+            <button class="tab-link" onclick="openTab(event, 'byDepartment')">By Department</button>
+            <button class="tab-link" onclick="openTab(event, 'byCompany')">By Company</button>
         </div>
+
+        <div id="allMentors" class="tab-content" style="display: block;">
+            <div class="mentor-grid">
+                </div>
+        </div>
+
+        <div id="byDepartment" class="tab-content">
+            </div>
+
+        <div id="byCompany" class="tab-content">
+            </div>
     </main>
+
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Mentor Connect. All rights reserved.</p>
             <p>
-                <a href="#" style="color:#4f8cff;text-decoration:none;">Privacy Policy</a> |
-                <a href="#" style="color:#4f8cff;text-decoration:none;">Terms of Service</a>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a>
             </p>
         </div>
     </footer>
+
     <script>
+        // Data for all mentors
+        const mentorsData = [
+            { name: 'John Doe', photo: 'men/32', title: 'Software Engineer, Google', desc: 'Front-end specialist, React expert, and passionate about mentoring junior developers.', email: 'johndoe@email.com', department: 'Web Development', company: 'Google' },
+            { name: 'Priya Sharma', photo: 'women/44', title: 'Data Scientist, Microsoft', desc: 'Expert in machine learning, data analytics, and helping students break into tech careers.', email: 'priya.sharma@email.com', department: 'Data Science', company: 'Microsoft' },
+            { name: 'Carlos Mendez', photo: 'men/65', title: 'Full Stack Developer, Amazon', desc: 'Specializes in Node.js, AWS, and cloud deployment strategies for scalable web apps.', email: 'carlos.mendez@email.com', department: 'Web Development', company: 'Amazon' },
+            { name: 'Emily Chen', photo: 'women/68', title: 'UI/UX Designer, Adobe', desc: 'Focused on accessibility, user research, and portfolio building for creative professionals.', email: 'emily.chen@email.com', department: 'UX Design', company: 'Adobe' },
+            { name: 'Amit Patel', photo: 'men/23', title: 'Mobile App Developer, Flipkart', desc: 'Flutter enthusiast, advocate for cross-platform solutions, and mobile UI expert.', email: 'amit.patel@email.com', department: 'Web Development', company: 'Flipkart' },
+            { name: 'Sara Lee', photo: 'women/12', title: 'Product Manager, Spotify', desc: 'Guides students in product thinking, agile methodologies, and launching successful products.', email: 'sara.lee@email.com', department: 'Product Management', company: 'Spotify' },
+            { name: 'David Kim', photo: 'men/41', title: 'Cloud Engineer, Microsoft', desc: 'Expert in CI/CD pipelines, automation, and cloud infrastructure for enterprise solutions.', email: 'david.kim@email.com', department: 'Cloud Engineering', company: 'Microsoft' },
+            { name: 'Fatima Zahra', photo: 'women/55', title: 'Cybersecurity Analyst, Cisco', desc: 'Specializes in network security, ethical hacking, and cyber risk management.', email: 'fatima.zahra@email.com', department: 'Cybersecurity', company: 'Cisco' },
+            { name: 'Alex Ivanov', photo: 'men/77', title: 'AI Researcher, DeepMind', desc: 'Passionate about artificial intelligence, deep learning, and research mentorship.', email: 'alex.ivanov@email.com', department: 'AI Research', company: 'Google' },
+            { name: 'Linda Park', photo: 'women/36', title: 'Business Analyst, Deloitte', desc: 'Helps students with business analytics, consulting skills, and career transitions.', email: 'linda.park@email.com', department: 'Product Management', company: 'Deloitte' },
+            { name: 'Michael Brown', photo: 'men/81', title: 'Senior Data Scientist, Netflix', desc: 'Focuses on recommendation systems, A/B testing, and large-scale data processing with Python.', email: 'michael.brown@email.com', department: 'Data Science', company: 'Netflix' },
+            { name: 'Chloe Dubois', photo: 'women/21', title: 'UX Researcher, Meta', desc: 'Expert in qualitative research methods, usability testing, and translating insights into design.', email: 'chloe.dubois@email.com', department: 'UX Design', company: 'Meta' },
+            { name: 'Kenji Tanaka', photo: 'men/15', title: 'Backend Engineer, Amazon', desc: 'Builds robust and scalable microservices using Go and serverless technologies on AWS.', email: 'kenji.tanaka@email.com', department: 'Web Development', company: 'Amazon' },
+            { name: 'Maria Garcia', photo: 'women/72', title: 'Product Lead, Google', desc: 'Specializes in product strategy, roadmap planning, and stakeholder management for B2B products.', email: 'maria.garcia@email.com', department: 'Product Management', company: 'Google' },
+            { name: 'Leo Martinez', photo: 'men/50', title: 'Information Security Engineer, Apple', desc: 'Securing cloud environments and implementing robust security protocols for critical infrastructure.', email: 'leo.martinez@email.com', department: 'Cybersecurity', company: 'Apple' },
+            { name: 'Isabella Rossi', photo: 'women/9', title: 'Machine Learning Engineer, Apple', desc: 'Works on on-device ML models for computer vision and natural language processing.', email: 'isabella.rossi@email.com', department: 'AI Research', company: 'Apple' },
+            { name: 'Ahmed Al-Farsi', photo: 'men/5', title: 'Cloud Solutions Architect, Oracle', desc: 'Designs and implements scalable, secure, and cost-effective cloud solutions for enterprise clients.', email: 'ahmed.alfarsi@email.com', department: 'Cloud Engineering', company: 'Oracle' },
+            { name: 'Sophie Müller', photo: 'women/51', title: 'Data Analyst, Salesforce', desc: 'Passionate about data visualization with Tableau and deriving actionable insights from business data.', email: 'sophie.muller@email.com', department: 'Data Science', company: 'Salesforce' },
+            { name: 'Daniel Wilson', photo: 'men/33', title: 'Senior UX Designer, Microsoft', desc: 'Designs intuitive and engaging user experiences for complex enterprise software products.', email: 'daniel.wilson@email.com', department: 'UX Design', company: 'Microsoft' },
+            { name: 'Olivia Taylor', photo: 'women/41', title: 'Penetration Tester, IBM', desc: 'Specializes in ethical hacking and vulnerability assessments to improve enterprise security posture.', email: 'olivia.taylor@email.com', department: 'Cybersecurity', company: 'IBM' },
+        ];
+
+        function createMentorCard(mentor) {
+            return `
+                <div class="mentor-card" data-department="${mentor.department}" data-company="${mentor.company}">
+                    <img src="https://randomuser.me/api/portraits/${mentor.photo}.jpg" alt="Mentor Photo" class="mentor-photo">
+                    <div class="mentor-name">${mentor.name}</div>
+                    <div class="mentor-title">${mentor.title}</div>
+                    <div class="mentor-desc">${mentor.desc}</div>
+                    <a href="mailto:${mentor.email}" class="mentor-contact">Contact</a>
+                </div>
+            `;
+        }
+        
+        // --- Populate Page on Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const allMentorsGrid = document.querySelector('#allMentors .mentor-grid');
+            const byDepartmentContainer = document.getElementById('byDepartment');
+            const byCompanyContainer = document.getElementById('byCompany');
+
+            let allCardsHTML = '';
+            mentorsData.forEach(mentor => {
+                allCardsHTML += createMentorCard(mentor);
+            });
+            allMentorsGrid.innerHTML = allCardsHTML;
+
+            // Group by department
+            const departments = [...new Set(mentorsData.map(m => m.department))].sort();
+            let departmentHTML = '';
+            departments.forEach(dept => {
+                departmentHTML += `<h2 class="mentor-section-heading">${dept}</h2><div class="mentor-grid">`;
+                mentorsData.filter(m => m.department === dept).forEach(mentor => {
+                    departmentHTML += createMentorCard(mentor);
+                });
+                departmentHTML += `</div>`;
+            });
+            byDepartmentContainer.innerHTML = departmentHTML;
+
+            // Group by company
+            const companies = [...new Set(mentorsData.map(m => m.company))].sort();
+            let companyHTML = '';
+            companies.forEach(comp => {
+                companyHTML += `<h2 class="mentor-section-heading">${comp}</h2><div class="mentor-grid">`;
+                mentorsData.filter(m => m.company === comp).forEach(mentor => {
+                    companyHTML += createMentorCard(mentor);
+                });
+                companyHTML += `</div>`;
+            });
+            byCompanyContainer.innerHTML = companyHTML;
+        });
+
+        // --- Sidebar Logic ---
         const hamburger = document.querySelector('.hamburger');
         const sidebar = document.querySelector('.sidebar');
+
         hamburger.addEventListener('mouseenter', () => {
             sidebar.style.left = '0';
         });
+
+        hamburger.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                const isHoveringSidebar = sidebar.matches(':hover');
+                const isHoveringHamburger = hamburger.matches(':hover');
+                if (!isHoveringSidebar && !isHoveringHamburger) {
+                     sidebar.style.left = window.innerWidth <= 700 ? '-80vw' : '-250px';
+                }
+            }, 150);
+        });
+
         sidebar.addEventListener('mouseleave', () => {
-            sidebar.style.left = '-250px';
+            sidebar.style.left = window.innerWidth <= 700 ? '-80vw' : '-250px';
         });
-        // Remove dark mode sync
-        document.addEventListener('DOMContentLoaded', function () {
-            const modeBtn = document.getElementById('mode-toggle');
-            if (modeBtn) {
-                modeBtn.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙';
-                modeBtn.addEventListener('click', function () {
-                    document.body.classList.toggle('dark-mode');
-                    if (document.body.classList.contains('dark-mode')) {
-                        modeBtn.textContent = '🌞';
-                    } else {
-                        modeBtn.textContent = '🌙';
-                    }
-                });
+
+        // --- Dark Mode Toggle ---
+        const modeBtn = document.getElementById('mode-toggle');
+        modeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            modeBtn.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙';
+        });
+
+        // --- Tab Logic ---
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
             }
-        });
+            const tablinks = document.getElementsByClassName("tab-link");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // --- Search and Filter Logic ---
         const mentorSearch = document.getElementById('mentor-search');
         const branchFilter = document.getElementById('branch-filter');
-        const mentorGrid = document.getElementById('mentor-grid');
+
         function filterMentors() {
             const query = mentorSearch.value.toLowerCase();
             const branch = branchFilter.value.toLowerCase();
-            Array.from(mentorGrid.children).forEach(card => {
+            
+            // Find the currently active tab
+            const activeTab = document.querySelector('.tab-content[style*="block"]');
+            if (!activeTab) return;
+
+            // Get all mentor cards within that active tab
+            const mentorCards = activeTab.querySelectorAll('.mentor-card');
+
+            mentorCards.forEach(card => {
                 const text = card.textContent.toLowerCase();
                 const branchMatch = branch === '' || text.includes(branch);
                 const searchMatch = text.includes(query);
                 card.style.display = branchMatch && searchMatch ? '' : 'none';
             });
         }
+
         mentorSearch.addEventListener('input', filterMentors);
         branchFilter.addEventListener('change', filterMentors);
     </script>
+
 </body>
 
 </html>
